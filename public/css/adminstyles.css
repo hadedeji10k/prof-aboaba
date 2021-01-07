@@ -1,0 +1,159 @@
+.sorting tr:not(.home) {
+    cursor: pointer;
+}
+
+.ui-state-highlight{
+    border: 1px dashed #ccc;
+}
+
+#imgPreview {
+    margin: 20px;
+}
+
+#noimage {
+    width: 100px;
+    height: 100px;
+}
+
+ul.gallery {
+    padding: 0;
+}
+
+ul.gallery li:first-child{
+    margin-left: 0;
+}
+
+ul.gallery li{
+    margin: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+table.alignmiddle td {
+    vertical-align: middle !important;
+  }
+
+/* Common styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.color-bg {
+    background: rgb(249, 255, 250);
+}
+
+
+.container1 {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(83, 83, 83);
+}
+
+ul li{
+    list-style-type: none;
+}
+
+/* Page Styles */
+.header1 {
+    background:#ece5dd;
+}
+
+.header1 .row {
+    margin-top: 70px;
+}
+
+.navbar1 {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar1 nav {
+    flex: 1;
+    text-align: right;
+}
+
+.navbar1 nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.navbar1 nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar1 nav ul li a{
+    text-decoration: none;
+    transition: all 0.1s;
+}
+
+.navbar1 nav ul li a:hover{
+    background-color: rgb(62, 100, 68);
+    color:  rgb(253, 255, 253);
+    padding: 7px;
+    border-radius: 3px;
+}
+
+.menu-icon {
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+/* Media Query for menu icon */
+@media only screen and (max-width: 800px) {
+    .navbar1 nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: rgb(62, 100, 68);
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.4s;
+    }
+    .navbar1 nav ul li {
+        display: block;
+        margin: 10px 50px 10px 0;
+    }
+    .navbar1 nav ul li a{
+        color:  rgb(253, 255, 253);
+    }
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+
+.footer {
+    background: rgb(223, 255, 228);
+    color: #08500b;
+    padding: 30px 0 10px;
+    bottom: 0;
+    text-align: center;
+}
+
+.footer .h3 {
+    color: rgb(7, 71, 15);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+}
+
+.center {
+    text-align: center;
+}

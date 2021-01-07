@@ -1,0 +1,36 @@
+<%- include ('_layouts/header') %> 
+
+    <div class="m-50">
+        <div class="container">
+            <div class="row">
+                <form method="post" action="/search" class="form1 center">
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+      <% if (resources.length == 0) { %>
+        <h3> No Resources at the moment </h3>
+    <% } else { %>
+
+<!-- All Resources -->
+    <div class="small-container">
+        <h2 class="title">All Resources</h2>
+        <div class="row">
+
+            <% resources.forEach(resource => { %>
+            <div class="column-4">
+                <h4><%= resource.title %></h4>
+                <p><%= resource.desc%></p>
+                <small><a target="_blank" href="<%= resource.link %>" class="btn">View Resources</a></small>
+            </div>
+            <% }) %>
+
+        </div>
+    </div>
+
+    <% } %>
+
+<%- include ('_layouts/footer') %> 

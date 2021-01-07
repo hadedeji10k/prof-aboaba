@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Store</title>
+
+     <!-- Bootstrap core CSS -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" > -->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/css/adminstyles.css">
+      <script src="/js/jquery.js"> </script>
+      <link rel="stylesheet" href="/css/fancy.css">
+      
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="color-bg">
+    
+        <div class="container1">
+            <div class="navbar1">
+                <div class="logo">
+                    <a href="/admin">
+                        <img src="/images/logo.png" alt="" width="125px">
+                    </a>
+                </div>
+                <nav>
+                    <ul id="menuItem">
+                        <li><a href="/admin">Admin-Home</a></li>
+                        <li><a href="/admin/books">Books</a></li>
+                        <li><a href="/admin/medias">Medias</a></li>
+                        <li><a href="/admin/resources">Resources</a></li>
+                        <!-- <li><a href="/admin/carousel">Carousels</a></li> -->
+                    </ul>
+                </nav>
+                <img src="/images/menu.png" class="menu-icon" onclick="toggle()">
+            </div>
+        </div>
+      
+<div class="container">
+    <%- messages('messages', locals) %>
+
+    <% if (errors) { %>
+      <% errors.forEach(error => { %>
+        <div class="alert alert-danger">
+        <%= error.msg %>
+          </div>
+    <%  }); %>
+   <% } %>
+</div>
+
+
+<br><br><br>
+<div class="container">
+  

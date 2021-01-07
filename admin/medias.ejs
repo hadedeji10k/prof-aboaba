@@ -1,0 +1,51 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Medias</h1>
+<a href="/admin/medias/add-media" class="btn btn-primary">Add a new Media link</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Medias</th>
+            <th>Media Preview Image</th>
+            <th>Video Link Site</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% medias.forEach(media => { %>
+        <tr>
+            <td> <%= media.title %>  </td>
+            <td><img id="noimage" src="/images/video-preview.png"></td>
+            <td><%= media.site %></td>
+            <td><a class="btn btn-primary" href="/admin/medias/edit-media/<%= media._id %>">Edit</a></td>
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/medias/delete-media/<%= media._id %>">Delete</a></td>
+
+            
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no medias</h3>
+<% } %>
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

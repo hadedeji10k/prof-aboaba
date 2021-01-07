@@ -1,0 +1,54 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Add a Media Link</h1>
+<a href="/admin/books" class="btn btn-primary">Back to all Media Links</a>
+<br> <br>
+
+<form action="/admin/medias/add-media" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+        
+        <br>
+        <label for="">Description</label>
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+        <br>
+
+        <input list="browsers" name="site" id="browser" class="form-control" placeholder="Select type of video link" required>
+        <datalist id="browsers">
+            <option value="Youtube Link">
+            <option value="Google Drive Link">
+        </datalist>
+        <br>
+
+        <label for="">Link of the video to be uploaded</label>
+        <input type="text" class="form-control" name="link" required>
+
+    </div>
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+
+
+
+<script>
+    
+    // function readURL(input) {
+    //     if (input.files && input.files[0]){
+    //         var reader = new FileReader();
+
+    //         reader.onload = function(e){
+    //             $("#imgPreview").attr("src", e.target.result).width(100).height(100);
+    //         }
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+
+    // $("#img").change(function(){
+    //     readURL(this);
+    // });
+
+</script>
+
+<%- include ('../views/_layouts/adminfooter') %> 

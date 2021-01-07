@@ -1,0 +1,48 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Resources</h1>
+<a href="/admin/resources/add-resources" class="btn btn-primary">Add a new Resource</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Resources</th>
+            <th>Resources Link</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% resources.forEach(resource => { %>
+        <tr>
+            <td> <%= resource.title %>  </td>
+            <td><%= resource.link %> </td>
+            <td><a class="btn btn-primary" href="/admin/resources/edit-resources/<%= resource._id %>">Edit</a></td>
+
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/resources/delete-resources/<%= resource._id %>">Delete</a></td>            
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no Resources</h3>
+<% } %>
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

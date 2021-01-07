@@ -1,0 +1,39 @@
+<%- include ('_layouts/header') %> 
+
+    <div class="m-50">
+        <div class="container">
+            <div class="row">
+                <form method="post" action="/search" class="form1 center">
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <% if (medias.length == 0) { %>
+        <h3> No Media at the moment </h3>
+    <% } else { %>
+
+        <!-- All Medias -->
+    <div class="small-container">
+        <h2 class="title">All Medias</h2>
+        <div class="row">
+
+            <% medias.forEach(media => { %>
+            <div class="column-4">
+                <img src="/images/video-preview.png" alt="">
+                <h4><%= media.title %></h4>
+                <p><%= media.desc.substring(0,50) + "..."%></p>
+                <small><a href="/medias/<%= media.slug %>" class="btn">View Media</a></small>
+            </div>
+            <% }) %>
+
+        </div>
+    </div>
+
+
+    <% } %>
+
+
+<%- include ('_layouts/footer') %> 

@@ -1,0 +1,62 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Edit Carousel</h1>
+<a href="/admin/carousel" class="btn btn-primary">Back to all Carousels</a>
+<br> <br>
+
+<form action="/admin/carousel/edit-carousel/<%= id %>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+        
+        <br>
+        <label for="">Description</label>
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+        
+        <br>
+
+        <label for="">Current Carousel</label>
+        <p>
+            <% if (image == "") { %>
+                <img id="noimage" src="/images/noimage.png">
+            <% } else { %>
+                <img id="noimage" src="/carousel_images/<%= image %>">
+            <% } %>
+        </p>        
+
+        <br>
+        <label for="">Update Carousel Image</label>
+        <input type="file" class="form-control" name="image" id="img">
+        <img src="#" id="imgPreview">
+        <br> <br>
+
+    </div>
+    
+    <input type="hidden" name="pimage" value="<%= image %>">
+    
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+
+<script>
+
+    // Preview Image
+    function readURL(input) {
+        if (input.files && input.files[0]){
+            var reader = new FileReader();
+
+            reader.onload = function(e){
+                $("#imgPreview").attr("src", e.target.result).width(100).height(100);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img").change(function(){
+        readURL(this);
+    });
+
+</script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

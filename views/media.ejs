@@ -1,0 +1,61 @@
+<%- include ('_layouts/header') %> 
+
+         <!-- Single Book -->
+         <div class="small-container single-product">
+            <h1 class="center"><%= title %></h1>
+            <div class="row">
+                <div class="column-2 align-right">
+                    <img class="book-img" src="/images/video-preview.png" width="50%">
+                </div>
+                <div class="column-2">
+                    <h4>Media Details:</h4> 
+                    <p><%= p.desc %></p> <br>
+                    <% if (p.site == "Google Drive Link") { %>
+                        <a target="_blank" href="<%= p.link %>" class="btn">Watch the video</a>
+                    <% } else { %>
+                        <a class="btn" data-fancybox href="<%= p.link %>">Watch the video</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    
+        </div>
+    <br> <br> <br>
+        <div class="small-container">
+            <div class="center m-50">
+                <h3>Do you have any comment about the book?</h3>
+                <p>Click the button below</p>
+                <small>Please provide your E-mail when filling the comment</small>
+                <br>
+                <a href="mailto:adedejiyusuf26@gmail.com?subject=Comment on the media: <%= title %>" class="btn btn-primary">Comment</a>
+        
+            </div>
+        </div>
+    
+
+
+
+<!-- Script -->
+<script>
+    $('[data-fancybox]').fancybox({
+        toolbar  : false,
+        smallBtn : true,
+        iframe : {
+            preload : false
+        }
+    })
+
+</script>
+
+<style>
+.fancybox-slide--iframe .fancybox-content {
+    width  : 800px;
+    height : 600px;
+    max-width  : 80%;
+    max-height : 80%;
+    margin: 0;
+}
+</style>
+
+
+<%- include ('_layouts/footer') %> 

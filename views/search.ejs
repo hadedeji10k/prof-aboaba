@@ -1,0 +1,101 @@
+<%- include ('_layouts/header') %> 
+
+<div class="m-50">
+    <div class="container">
+        <div class="row">
+            <form method="post" action="/search" class="form1 center">
+                <input type="text" name="search" placeholder="Search" value="<%= search %>">
+                <button class="btn" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<% if (books.length === 0 & medias.length === 0 & resources.length === 0) { %>
+ <div class="small-container">
+    <div class="row">
+        <h4>No result found.</h4>
+    </div>
+ </div>
+<% } else { %>
+
+    <% if (books.length === 0) { %>
+        <div class="small-container">
+                <32 class="title">Result in Books</h3>
+            <div class="row">
+                <h4>No result found in Books.</h4>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="small-container">
+            <h3 class="title">Result in Books</h3>
+            <div class="row">
+
+                <% books.forEach(book => { %>
+                <div class="column-4">
+                    <img src="/book_images/<%= book.id %>/<%= book.image %>" alt="">
+                    <h4><%= book.title %></h4>
+                    <p><%= book.desc.substring(0,50) + "..."%></p>
+                    <small><a href="/books/<%= book.slug %>" class="btn">View Book</a></small>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    <% } %> 
+
+
+    <% if (medias.length === 0) { %>
+        <div class="small-container">
+                <h3 class="title">Result in Medias</h3>
+            <div class="row">
+                <h4>No result found in Medias</h4>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="small-container">
+            <h3 class="title">Result in Medias</h3>
+            <div class="row">
+
+                <% medias.forEach(media => { %>
+                <div class="column-4">
+                    <img src="/images/video-preview.png" alt="">
+                    <h4><%= media.title %></h4>
+                    <p><%= media.desc.substring(0,50) + "..."%></p>
+                    <small><a href="/medias/<%= media.slug %>" class="btn">View Media</a></small>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    <% } %> 
+
+
+    <% if (resources.length === 0) { %>
+        <div class="small-container">
+            <h3 class="title">Result in Resources</h3>
+            <div class="row">
+                <h4>No result found in Resources</h4>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="small-container">
+            <h3 class="title">Result in Resources</h3>
+            <div class="row">
+                <% resources.forEach(resource => { %>
+                <div class="column-4">
+                    <h4><%= resource.title %></h4>
+                    <p><%= resource.desc%></p>
+                    <small><a target="_blank" href="<%= resource.link %>" class="btn">View Resources</a></small>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    <% } %> 
+
+<% } %> 
+
+<%- include ('_layouts/footer') %> 

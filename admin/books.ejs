@@ -1,0 +1,59 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Books</h1>
+<a href="/admin/books/add-book" class="btn btn-primary">Add a new Book</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Books</th>
+            <th>Book Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% books.forEach(book => { %>
+        <tr>
+            <td> <%= book.title %>  </td>
+            <td> 
+
+                <% if (book.image == "") { %> 
+                    <img id="noimage" src="/images/noimage.png">
+                <% } else { %>
+                    <img id="noimage" src="/book_images/<%= book.id %>/<%= book.image %>">
+                <% } %>
+
+
+            </td>
+            <td><a class="btn btn-primary" href="/admin/books/edit-book/<%= book._id %>">Edit</a></td>
+
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/books/delete-book/<%= book._id %>">Delete</a></td>
+
+            
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no books</h3>
+<% } %>
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

@@ -1,0 +1,19 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Add a Resource</h1>
+<a href="/admin/resources" class="btn btn-primary">Back to all Resources</a>
+<br> <br>
+
+<form action="/admin/resources/add-resources" method="post">
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" required placeholder="Title"><br> 
+        <label for="">Description</label> 
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea><br> 
+        <label for="">Resource Link</label> 
+        <input type="text" class="form-control" name="link" value="<%= link %>" required placeholder="Resource Link"><br> 
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+
+<%- include ('../views/_layouts/adminfooter') %> 

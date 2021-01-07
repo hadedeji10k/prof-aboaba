@@ -1,0 +1,59 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Carousel</h1>
+<a href="/admin/carousel/add-carousel" class="btn btn-primary">Add a new Carousel</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Carousel</th>
+            <th>Carousel Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% carousels.forEach(carousel => { %>
+        <tr>
+            <td> <%= carousel.title %>  </td>
+            <td> 
+
+                <% if (carousel.image == "") { %> 
+                    <img id="noimage" src="/images/noimage.png">
+                <% } else { %>
+                    <img id="noimage" src="/carousel_images/<%= carousel.image %>">
+                <% } %>
+
+
+            </td>
+            <td><a class="btn btn-primary" href="/admin/carousel/edit-carousel/<%= carousel._id %>">Edit</a></td>
+
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/carousel/delete-carousel/<%= carousel.image %>/<%= carousel._id %>">Delete</a></td>
+
+            
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no carousels</h3>
+<% } %>
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 
