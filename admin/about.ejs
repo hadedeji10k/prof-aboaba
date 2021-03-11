@@ -1,0 +1,50 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">About Me</h1>
+<a href="/admin/about/add-about" class="btn btn-primary">Add About Me</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>About</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% abouts.forEach(about => { %>
+        <tr>
+            <td> <%= about.title %>  </td>
+            <td><a class="btn btn-primary" href="/admin/about/edit-about/<%= about._id %>">Edit</a></td>
+            <% if (about.slug == "name") { %>
+             <td></td>
+            <% } else { %>
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/about/delete-about/<%= about._id %>">Delete</a></td>
+            <% } %> 
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no About Me</h3>
+<% } %>
+
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

@@ -1,0 +1,82 @@
+<%- include ('_layouts/header') %> 
+
+ 
+
+            <!-- Single Conference -->
+    <div class="small-container single-product">
+        <h1 class="center"><%= title %></h1>
+        <div class="row">
+            <div class="column-2">
+                <img class="book-img" src="/conference_images/<%= p.id %>/<%= p.image %>" width="80%">
+            </div>
+            <div class="column-2">
+                <h4>Conference Details:</h4> 
+                <p><%= p.desc %></p> <br>
+                <a href="/conference_images/<%= p.id %>/conference/<%= p.file %>" class="btn" download>Download Conference</a>
+                <a data-fancybox data-type="iframe" href="/conference_images/<%= p.id %>/conference/<%= p.file %>" class="btn">View Conference</a>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title">Conference Preview</h3> <br>
+        <% if (galleryImages === 0) { %>
+         <h4>No image preview available</h4>
+        <% } else { %>
+            <div class="row">
+                <ul>
+                    <% galleryImages.forEach(image => { %>
+                        <% if (image != "thumbs") { %>
+                            <li class="gallery">
+                                <a data-fancybox="gallery" href="/conference_images/<%= p.id %>/gallery/<%= image %>">
+                                    <img src="/conference_images/<%= p.id %>/gallery/thumbs/<%= image %>" >
+                                </a>
+                            </li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %> 
+
+    </div>
+<br> <br> <br>
+    <div class="small-container">
+        <div class="center m-50">
+            <h3>Do you have any comment about the conference?</h3>
+            <p>Click the button below</p>
+            <small>Please provide your E-mail when filling the comment</small>
+            <br>
+            <a href="mailto:adedejiyusuf26@gmail.com?subject=Comment on the conference: <%= title %>" class="btn btn-primary">Comment</a>
+    
+        </div>
+    </div>
+
+
+<!-- Script -->
+<script>
+    $('[data-fancybox]').fancybox({
+        toolbar  : false,
+        smallBtn : true,
+        iframe : {
+            preload : false
+        }
+    })
+
+        $("[data-fancybox1]").fancybox({
+            'width': 600, // or whatever
+            'height': 320,
+            'type': 'iframe'
+        }); //  ready 
+</script>
+
+<style>
+.fancybox-slide--iframe .fancybox-content {
+    width  : 800px;
+    height : 600px;
+    max-width  : 80%;
+    max-height : 80%;
+    margin: 0;
+}
+</style>
+
+
+<%- include ('_layouts/footer') %> 

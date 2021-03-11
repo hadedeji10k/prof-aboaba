@@ -6,6 +6,9 @@ const resizeImg = require("resize-img");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require("fs");
+// require authentication for Admin
+const auth = require("../config/auth");
+const isAdmin = auth.isAdmin;
 
 const app = express();
 
@@ -16,7 +19,7 @@ app.use(fileUpload());
 var Book = require("../models/book");
 
 // GET books index
-router.get("/", function (req, res) {
+router.get("/", isAdmin, function (req, res) {
   var count;
 
   Book.countDocuments(function (err, c) {
@@ -32,7 +35,7 @@ router.get("/", function (req, res) {
 });
 
 // GET add book
-router.get("/add-book", function (req, res) {
+router.get("/add-book", isAdmin, function (req, res) {
   var title = "";
   var desc = "";
 
@@ -161,7 +164,7 @@ router.post("/add-book", function (req, res) {
 });
 
 // GET edit book
-router.get("/edit-book/:id", function (req, res) {
+router.get("/edit-book/:id", isAdmin, function (req, res) {
   var errors;
 
   if (req.session.errors) errors = req.session.errors;
@@ -330,7 +333,7 @@ router.post("/book-gallery/:id", function (req, res) {
 });
 
 // GET delete image
-router.get("/delete-image/:image", function (req, res) {
+router.get("/delete-image/:image", isAdmin, function (req, res) {
   var originalImage =
     "public/book_images/" + req.query.id + "/gallery/" + req.params.image;
   var thumbImage =
@@ -356,7 +359,7 @@ router.get("/delete-image/:image", function (req, res) {
 });
 
 // GET delete book
-router.get("/delete-book/:id", function (req, res) {
+router.get("/delete-book/:id", isAdmin, function (req, res) {
   var id = req.params.id;
   var path1 = "public/book_images/" + id;
 

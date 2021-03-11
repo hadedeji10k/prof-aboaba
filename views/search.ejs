@@ -13,21 +13,51 @@
 
 
 
-<% if (books.length === 0 & medias.length === 0 & resources.length === 0) { %>
+<% if (books.length === 0 & medias.length === 0 & resources.length === 0 & journals.length === 0 & conferences.length === 0) { %>
  <div class="small-container">
     <div class="row">
         <h4>No result found.</h4>
     </div>
  </div>
+ <br><br><br><br><br>
 <% } else { %>
 
+    <!-- Journal search -->
+    <% if (journals.length === 0) { %>
+        <div class="small-container">
+                <h3 class="title">Result in Journals</h3>
+            <div class="row">
+                <h4>No result found in Journals.</h4>
+            </div>
+        </div>
+        <br><br>
+    <% } else { %>
+        <div class="small-container">
+            <h3 class="title">Result in Journals</h3>
+            <div class="row">
+
+                <% journals.forEach(journal => { %>
+                <div class="column-4">
+                    <img src="/journal_images/<%= journal.id %>/<%= journal.image %>" alt="">
+                    <h4><%= journal.title %></h4>
+                    <p><%= journal.desc.substring(0,50) + "..."%></p>
+                    <small><a href="/journals/<%= journal.slug %>" class="btn">View Journal</a></small>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    <% } %> 
+
+<!-- Books search -->
     <% if (books.length === 0) { %>
         <div class="small-container">
-                <32 class="title">Result in Books</h3>
+                <h3 class="title">Result in Books</h3>
             <div class="row">
                 <h4>No result found in Books.</h4>
             </div>
         </div>
+        <br><br>
     <% } else { %>
         <div class="small-container">
             <h3 class="title">Result in Books</h3>
@@ -46,7 +76,34 @@
         </div>
     <% } %> 
 
+<!-- Conferences search -->
+    <% if (conferences.length === 0) { %>
+        <div class="small-container">
+                <h3 class="title">Result in Conferences</h3>
+            <div class="row">
+                <h4>No result found in Conferences.</h4>
+            </div>
+        </div>
+        <br><br>
+    <% } else { %>
+        <div class="small-container">
+            <h3 class="title">Result in Conferences</h3>
+            <div class="row">
 
+                <% conferences.forEach(conference => { %>
+                <div class="column-4">
+                    <img src="/conference_images/<%= conference.id %>/<%= conference.image %>" alt="">
+                    <h4><%= conference.title %></h4>
+                    <p><%= conference.desc.substring(0,50) + "..."%></p>
+                    <small><a href="/conferences/<%= conference.slug %>" class="btn">View Conference</a></small>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    <% } %> 
+
+<!-- Medias search -->
     <% if (medias.length === 0) { %>
         <div class="small-container">
                 <h3 class="title">Result in Medias</h3>
@@ -54,6 +111,7 @@
                 <h4>No result found in Medias</h4>
             </div>
         </div>
+        <br><br>
     <% } else { %>
         <div class="small-container">
             <h3 class="title">Result in Medias</h3>
@@ -72,7 +130,7 @@
         </div>
     <% } %> 
 
-
+<!-- Resources search -->
     <% if (resources.length === 0) { %>
         <div class="small-container">
             <h3 class="title">Result in Resources</h3>
@@ -80,6 +138,7 @@
                 <h4>No result found in Resources</h4>
             </div>
         </div>
+        <br><br>
     <% } else { %>
         <div class="small-container">
             <h3 class="title">Result in Resources</h3>
@@ -97,5 +156,5 @@
     <% } %> 
 
 <% } %> 
-
+<br><br><br>
 <%- include ('_layouts/footer') %> 

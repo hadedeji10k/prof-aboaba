@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aboaba - Home</title>
+    <title>Prof. Aboaba - Home</title>
 
     <link rel="stylesheet" href="/css/styles.css">
 
@@ -17,18 +17,26 @@
                 <div class="navbar">
                     <div class="logo">
                         <a href="/">
-                            <img src="images/logo.png" alt="" width="125px">
+                            <img src="images/logo.png" alt="" width="150px">
                         </a>
                     </div>
                     <nav>
                         <ul id="menuItem">
                             <li><a href="/">Home</a></li>
-                            <li><a href="/books">Books</a></li>
+                            <div class="dropdown">
+                                <li class="publication"> Publications </li>
+                                    <div class="dropdown-content">
+                                        <li><a href="/journals"> Journals </a></li>
+                                        <li><a href="/books"> Books </a></li>
+                                        <li><a href="/conferences"> Conferences </a></li>
+                                    </div>
+                            </div>
                             <li><a href="/medias">Medias</a></li>
                             <li><a href="/resources">Resources</a></li>
                             <li><a href="/search">Search</a></li>
+                            <li><a href="/research">Research Interest</a></li>
                             <li><a href="/about">About Me</a></li>
-                        </ul>
+                            </ul>
                     </nav>
                     <img src="images/menu.png" class="menu-icon" onclick="toggle()">
                 </div>
@@ -36,11 +44,11 @@
             <div class="bg m-0">
                 <div class="container">
                     <div class="row">
-                        <div class="column-2 m-50">
+                        <div class="column-2 m-50 center">
                             <div class="bg-div">
                             <h1>Aboaba's Collection</h1>
-                            <p>Never Stop Learning!!!</p>
-                            <a href="" class="btn">Explore Now  &#8594;</a>
+                            <p>Never Stop Learning!!!</p><br>
+                            <a href="/books" class="btn">Explore Now  &#8594;</a>
                             </div>
                         </div>
                        
@@ -62,6 +70,37 @@
 
     <br>
 
+<% if (journals.length === 0) { %>
+    <div class="small-container">
+        <h2 class="title">Latest Journals</h2>
+        <h4 class="center">No Latest Journals at the moment.</h4>
+    </div>
+<% } else { %>
+<!-- Latest Journal -->
+    <div class="small-container">
+        <h2 class="title">Latest Journals</h2>
+        <div class="row">
+
+            <% journals.forEach(journal => { %>
+            <div class="column-4">
+                <img src="/journal_images/<%= journal.id %>/<%= journal.image %>" alt="">
+                <h4><%= journal.title %></h4>
+                <p><%= journal.desc.substring(0,50) + "..."%></p>
+                <small><a href="/journals/<%= journal.slug %>" class="btn">View Journal</a></small>
+            </div>
+            <% }) %>
+
+        </div>
+    </div>
+<% } %>
+
+
+<% if (books.length === 0) { %>
+    <div class="small-container">
+        <h2 class="title">Latest Books</h2>
+        <h4 class="center">No Latest Books at the moment.</h4>
+    </div>
+<% } else { %>
 
 <!-- Latest Books -->
     <div class="small-container">
@@ -79,8 +118,40 @@
 
         </div>
     </div>
+<% } %>
 
 
+<% if (conferences.length === 0) { %>
+    <div class="small-container">
+        <h2 class="title">Latest Conferences</h2>
+        <h4 class="center">No Latest Conference at the moment.</h4>
+    </div>
+<% } else { %>
+<!-- Latest Conferences -->
+    <div class="small-container">
+        <h2 class="title">Latest Conferences</h2>
+        <div class="row">
+
+            <% conferences.forEach(conference => { %>
+            <div class="column-4">
+                <img src="/conference_images/<%= conference.id %>/<%= conference.image %>" alt="">
+                <h4><%= conference.title %></h4>
+                <p><%= conference.desc.substring(0,50) + "..."%></p>
+                <small><a href="/conferences/<%= conference.slug %>" class="btn">View Conference</a></small>
+            </div>
+            <% }) %>
+
+        </div>
+    </div>
+<% } %>
+
+
+<% if (medias.length === 0) { %>
+    <div class="small-container">
+        <h2 class="title">Latest Medias</h2>
+        <h4 class="center">No Latest Media at the moment.</h4>
+    </div>
+<% } else { %>
 <!-- Latest Medias -->
     <div class="small-container">
         <h2 class="title">Latest Medias</h2>
@@ -97,8 +168,15 @@
 
         </div>
     </div>
+<% } %> 
 
 
+<% if (resources.length === 0) { %>
+    <div class="small-container">
+        <h2 class="title">Latest Resources</h2>
+        <h4 class="center">No Latest Resources at the moment.</h4>
+    </div>
+<% } else { %>
 <!-- Latest Resources -->
     <div class="small-container">
         <h2 class="title">Latest Resources</h2>
@@ -115,9 +193,10 @@
 
         </div>
     </div>
+<% } %> 
 
 
-
+    
 <br><br>
 
     <!-- Footer -->
@@ -153,7 +232,7 @@
     
     function toggle() {
         if(menuItems.style.maxHeight == "0px"){
-            menuItems.style.maxHeight = "250px";
+            menuItems.style.maxHeight = "290px";
         } else {
             menuItems.style.maxHeight = "0px";
         }

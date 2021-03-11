@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aboaba</title>
+    <title>Prof. Aboaba</title>
 
     <link rel="stylesheet" href="/css/styles.css">
       <script src="/js/jquery.js"> </script>
@@ -20,18 +20,26 @@
             <div class="navbar">
                 <div class="logo">
                     <a href="/">
-                        <img src="/images/logo.png" alt="" width="125px">
+                        <img src="/images/logo.png" alt="" width="150px">
                     </a>
                 </div>
                 <nav>
                     <ul id="menuItem">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/books">Books</a></li>
+                        <div class="dropdown">
+                            <li class="publication"> Publications </li>
+                                <div class="dropdown-content">
+                                    <li><a href="/journals"> Journals </a></li>
+                                    <li><a href="/books"> Books </a></li>
+                                    <li><a href="/conferences"> Conferences </a></li>
+                                </div>
+                        </div>
                         <li><a href="/medias">Medias</a></li>
                         <li><a href="/resources">Resources</a></li>
                         <li><a href="/search">Search</a></li>
+                        <li><a href="/research">Research Interest</a></li>
                         <li><a href="/about">About Me</a></li>
-                    </ul>
+                        </ul>
                 </nav>
                 <img src="/images/menu.png" class="menu-icon" onclick="toggle()">
             </div>

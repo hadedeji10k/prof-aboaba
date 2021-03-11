@@ -6,6 +6,9 @@ const resizeImg = require("resize-img");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require("fs");
+// require authentication for Admin
+const auth = require("../config/auth");
+const isAdmin = auth.isAdmin;
 
 const app = express();
 
@@ -16,7 +19,7 @@ app.use(fileUpload());
 var Media = require("../models/media");
 
 // GET medias index
-router.get("/", function (req, res) {
+router.get("/", isAdmin, function (req, res) {
   var count;
 
   Media.countDocuments(function (err, c) {
@@ -32,7 +35,7 @@ router.get("/", function (req, res) {
 });
 
 // GET add media
-router.get("/add-media", function (req, res) {
+router.get("/add-media", isAdmin, function (req, res) {
   var title = "";
   var desc = "";
 
@@ -152,7 +155,7 @@ router.post("/add-media", function (req, res) {
 });
 
 // GET edit media
-router.get("/edit-media/:id", function (req, res) {
+router.get("/edit-media/:id", isAdmin, function (req, res) {
   var errors;
 
   if (req.session.errors) errors = req.session.errors;
@@ -281,7 +284,7 @@ router.post("/edit-media/:id", function (req, res) {
 });
 
 // GET delete media Link
-router.get("/delete-media/:id", function (req, res) {
+router.get("/delete-media/:id", isAdmin, function (req, res) {
   var id = req.params.id;
 
   Media.findByIdAndRemove(id, function (err) {

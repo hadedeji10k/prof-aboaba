@@ -6,6 +6,9 @@ const resizeImg = require("resize-img");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require("fs");
+// require authentication for Admin
+const auth = require("../config/auth");
+const isAdmin = auth.isAdmin;
 
 const app = express();
 
@@ -16,7 +19,7 @@ app.use(fileUpload());
 var Carousel = require("../models/carousel");
 
 // GET Carousel index
-router.get("/", function (req, res) {
+router.get("/", isAdmin, function (req, res) {
   var count;
 
   Carousel.countDocuments(function (err, c) {
@@ -32,7 +35,7 @@ router.get("/", function (req, res) {
 });
 
 // GET add carousel
-router.get("/add-carousel", function (req, res) {
+router.get("/add-carousel", isAdmin, function (req, res) {
   var title = "";
   var desc = "";
 
@@ -47,7 +50,8 @@ router.post("/add-carousel", function (req, res) {
   if (!req.files || Object.keys(req.files).length === 0) {
     var carouselImage = "";
   } else {
-    var carouselImage = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+    var carouselImage =
+      typeof req.files.image !== "undefined" ? req.files.image.name : "";
   }
 
   req.checkBody("title", "Title must have a value").notEmpty();
@@ -75,7 +79,6 @@ router.post("/add-carousel", function (req, res) {
           desc: desc,
         });
       } else {
-
         var carousel = new Carousel({
           title: title,
           slug: slug,
@@ -104,27 +107,25 @@ router.post("/add-carousel", function (req, res) {
 });
 
 // GET edit carousel
-router.get("/edit-carousel/:id", function (req, res) {
+router.get("/edit-carousel/:id", isAdmin, function (req, res) {
   var errors;
 
   if (req.session.errors) errors = req.session.errors;
   req.session.errors = null;
-
 
   Carousel.findById(req.params.id, function (err, p) {
     if (err) {
       console.log(err);
       res.redirect("/admin/carousel");
     } else {
-      
-          res.render("../admin/edit_carousel", {
-            title: p.title,
-            errors: errors,
-            desc: p.desc,
-            image: p.image,
-            id: p._id,
-          });
-        }
+      res.render("../admin/edit_carousel", {
+        title: p.title,
+        errors: errors,
+        desc: p.desc,
+        image: p.image,
+        id: p._id,
+      });
+    }
   });
 });
 
@@ -179,20 +180,16 @@ router.post("/edit-carousel/:id", function (req, res) {
 
             if (carouselImage != "") {
               if (pimage != "") {
-                fs.rm(
-                  "public/carousel_images/" + pimage,
-                  function (err) {
-                    if (err) console.log(err);
+                fs.rm("public/carousel_images/" + pimage, function (err) {
+                  if (err) console.log(err);
 
-                    var previewImage = req.files.image;
-                    var Uploadpath =
-                      "public/carousel_images/" + carouselImage;
+                  var previewImage = req.files.image;
+                  var Uploadpath = "public/carousel_images/" + carouselImage;
 
-                    previewImage.mv(Uploadpath, (err) => {
-                      if (err) return console.log(err);
-                    });
-                  }
-                );
+                  previewImage.mv(Uploadpath, (err) => {
+                    if (err) return console.log(err);
+                  });
+                });
               }
             }
 
@@ -206,8 +203,7 @@ router.post("/edit-carousel/:id", function (req, res) {
 });
 
 // GET delete carousel
-router.get("/delete-carousel/:image/:id", function (req, res) {
-
+router.get("/delete-carousel/:image/:id", isAdmin, function (req, res) {
   var image = req.params.image;
   var id = req.params.id;
   var path1 = "public/carousel_images/" + image;

@@ -1,0 +1,48 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Research Interest</h1>
+<a href="/admin/research/add-research" class="btn btn-primary">Add Research Interest</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Research</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% researches.forEach(research => { %>
+        <tr>
+            <td> <%= research.title %>  </td>
+            <td><a class="btn btn-primary" href="/admin/research/edit-research/<%= research._id %>">Edit</a></td>
+            
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/research/delete-research/<%= research._id %>">Delete</a></td>
+       
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no research Interest</h3>
+<% } %>
+
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

@@ -1,0 +1,27 @@
+<%- include ('_layouts/header') %> 
+
+<!-- <h2 class="page-title p-sm">About</h2> 
+
+<p class="p-2">This is Our About page</p> -->
+
+<br><br><br>
+<div class="container">
+    <h2 class="center green">Research Interest</h2> <br>
+    <!-- <h4 class="center"><i> Professor in computer Engineering</i></h4> -->
+    <!-- <h4 class="center"><i> University of Maiduguri</i></h4> <br><br> -->
+    <!-- <div class="image center">
+        <img src="/images/passport.jfif" alt="Photograph of Me">
+    </div> -->
+    <div class="p-50">
+        <% researches.forEach(research => { %>
+            <br>
+         <h4 class="center"><%= research.title %> </h4>
+         <p style="font-size: 19px;" class="center"><%= research.desc %> </p>
+        <% }) %>
+    </div>
+    
+
+    <br><br><br>
+</div>
+
+<%- include ('_layouts/footer') %> 

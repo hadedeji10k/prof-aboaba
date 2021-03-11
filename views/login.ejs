@@ -1,0 +1,22 @@
+<%- include ('_layouts/adminheader') %> 
+
+
+<h2 class="text-center page-title"><%= title %> </h2> <br>
+<div class="col-xs-12 col-md-5 mx-auto">
+    <form class="" action="/users/login" method="post">
+        <div class="form-group">
+            <label for="">Username</label>
+            <input class="form-control" type="text" placeholder="Username" name="username">
+        </div>
+        <div class="form-group">
+            <label  for="">Password</label>
+            <input class="form-control" type="password" placeholder="Password" name="password" width="300px">
+        </div>
+        <a href="/users/forgot-password">Forgot Password?</a> <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+    
+<br><br>
+
+<%- include ('_layouts/adminfooter') %> 

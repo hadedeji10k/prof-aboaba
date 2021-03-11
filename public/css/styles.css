@@ -17,6 +17,68 @@ body {
     background: rgb(249, 255, 250);
 }
 
+/* Dropdown */
+.dropdown {
+    display: inline;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(249, 255, 250);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.dropdown-content li {
+    display: block;
+    margin: 15px;
+}
+.dropdown-content li a{
+    color: #555;
+}
+
+.publication {
+    color: #555;
+    cursor: pointer;
+}
+
+.publication:hover {
+    background-color: rgb(62, 100, 68);
+    color: rgb(253, 255, 253);
+    padding: 7px;
+    border-radius: 3px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media only screen and (max-width: 1000px) {
+    .dropdown {
+        float: none;
+    }
+    .dropdown-content {
+        position: relative;
+        min-width: 190px;
+        text-align: right;
+    } 
+    .dropdown-content li a{
+        margin-right: 40px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .publication {
+        color: #fff;
+        cursor: pointer;
+    }
+}
+/* End of Dropdown */
+
 .book-img {
     -webkit-box-shadow: 3px 3px 6px 0px rgba(101, 170, 48, 0.5);
     -moz-box-shadow: 3px 3px 6px 0px rgba(101, 170, 48, 0.5);
@@ -165,13 +227,34 @@ p {
 .column-4 {
     flex-basis: 25%;
     padding: 10px;
-    min-width: 200px;
-    margin-bottom: 50px;
+    max-width: 220px;
+    margin-bottom: 35px;
     transition: all 0.5s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     align-items: center;
     text-align: center;
+}
+
+@media only screen and (max-width: 960px) {
+    .column-4 {
+        max-width: 200px;
+    }
+}
+@media only screen and (max-width: 880px) {
+    .column-4 {
+        max-width: 190px;
+    }
+}
+@media only screen and (max-width: 835px) {
+    .column-4 {
+        max-width: 180px;
+    }
+}
+@media only screen and (max-width: 795px) and (min-width: 784px) {
+    .column-4 {
+        max-width: 175px;
+    }
 }
 
 .column-5 {
@@ -361,31 +444,35 @@ nav ul li a:hover {
 
 
 /* Media Query for menu icon */
+@media only screen and (max-width: 1000px) {
+nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: rgb(62, 100, 68);
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.4s;
+    z-index: 2;
+}
+
+nav ul li {
+    display: block;
+    margin: 15px 50px 10px 0;
+}
+
+nav ul li a {
+    color: #fff;
+}
+
+.menu-icon {
+    display: block;
+    cursor: pointer;
+}
+}
+
+
 @media only screen and (max-width: 800px) {
-    nav ul {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background: rgb(62, 100, 68);
-        width: 100%;
-        overflow: hidden;
-        transition: max-height 0.4s;
-        z-index: 2;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 15px 50px 10px 0;
-    }
-
-    nav ul li a {
-        color: #fff;
-    }
-
-    .menu-icon {
-        display: block;
-        cursor: pointer;
-    }
 
     .btn {
         padding: 7px 10px;
@@ -488,7 +575,7 @@ h4 i {
     color: #02360d;
 }
 
-h2.green {
+.green {
     color: #02360d;
 }
 
@@ -547,15 +634,6 @@ h2.green {
 
 }
 
-@media only screen and (max-width: 830px) and (min-width: 650px) {
-    /* .header {
-        height: 100vh;
-    } */
-
-    /* .p-50 {
-        padding: 40px 30px;
-    } */
-}
 
 @media only screen and (max-width: 500px) {
 
@@ -600,4 +678,82 @@ a span i {
 a span i:hover {
     font-size: 45px;
     color: #024635;
+}
+
+button {
+    border: none;
+    text-decoration: none;
+    outline: none;
+  }
+  
+  select#selectBox {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding: 5px;
+  }
+
+
+
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+.pagination {
+    align-items: center;
+}
+.pagination ul {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 8px;
+  border-radius: 50px;
+  /* box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); */
+}
+.pagination ul li {
+  color: #fff;
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.pagination ul li.active span,
+.pagination ul li a:hover,
+.pagination ul li .prev span,
+.pagination ul li .prev span:hover
+{
+  color: #fff;
+}
+.pagination ul li.numb {
+  list-style: none;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+  line-height: 45px;
+  border-radius: 50%;
+}
+.pagination ul li.numb.first {
+  margin: 0px 3px 0 -5px;
+}
+.pagination ul li.numb.last {
+  margin: 0px -5px 0 3px;
+}
+.pagination ul li.dots {
+  font-size: 22px;
+  cursor: default;
+}
+.pagination ul li.btn {
+  padding: 0 20px;
+  border-radius: 50px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover {
+  color: #fff;
+  background: #08500b;
 }

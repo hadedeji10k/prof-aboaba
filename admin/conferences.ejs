@@ -1,0 +1,59 @@
+<%- include ('../views/_layouts/adminheader') %> 
+
+<h1 class="page-title">Conferences</h1>
+<a href="/admin/conferences/add-conference" class="btn btn-primary">Add a new Conference</a>
+<br> <br>
+
+<% if (count > 0) { %>
+ 
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Conferences</th>
+            <th>Conference Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% conferences.forEach(conference => { %>
+        <tr>
+            <td> <%= conference.title %>  </td>
+            <td> 
+
+                <% if (conference.image == "") { %> 
+                    <img id="noimage" src="/images/noimage.png">
+                <% } else { %>
+                    <img id="noimage" src="/conference_images/<%= conference.id %>/<%= conference.image %>">
+                <% } %>
+
+
+            </td>
+            <td><a class="btn btn-primary" href="/admin/conferences/edit-conference/<%= conference._id %>">Edit</a></td>
+
+            <td><a class="confirmDeletion btn btn-danger" href="/admin/conferences/delete-conference/<%= conference._id %>">Delete</a></td>
+
+            
+        </tr> 
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } else { %>
+    <h3 class="text-center">There are no Conferences</h3>
+<% } %>
+
+
+<!-- Jquery UI -->
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
+<!-- offline J1query UI -->
+<script src="/js/jquery-ui.js"></script>
+
+
+<%- include ('../views/_layouts/adminfooter') %> 

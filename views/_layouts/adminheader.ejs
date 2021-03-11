@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Store</title>
+    <title>Admin Prof. Aboaba</title>
 
      <!-- Bootstrap core CSS -->
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" > -->
@@ -25,16 +25,21 @@
             <div class="navbar1">
                 <div class="logo">
                     <a href="/admin">
-                        <img src="/images/logo.png" alt="" width="125px">
+                        <img src="/images/logo.png" alt="" width="150px">
                     </a>
                 </div>
                 <nav>
                     <ul id="menuItem">
                         <li><a href="/admin">Admin-Home</a></li>
-                        <li><a href="/admin/books">Books</a></li>
+                        <li><a href="/admin/publications">Publications</a></li>
                         <li><a href="/admin/medias">Medias</a></li>
                         <li><a href="/admin/resources">Resources</a></li>
-                        <!-- <li><a href="/admin/carousel">Carousels</a></li> -->
+                        <li><a href="/admin/other">Other</a></li>
+                        <% if (user && user.admin == 1) { %>
+                        <li><a href="/users/logout">Logout</a></li>
+                        <% } else { %>
+                        <li><a href="/users/login">Login</a></li>
+                        <% } %>
                     </ul>
                 </nav>
                 <img src="/images/menu.png" class="menu-icon" onclick="toggle()">
@@ -54,6 +59,6 @@
 </div>
 
 
-<br><br><br>
+<br><br>
 <div class="container">
   

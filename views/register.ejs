@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Aboaba - Home</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="color-bg">
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="images/logo.png" alt="" width="150px">
+                        </a>
+                    </div>
+                    <nav>
+                        <ul id="menuItem">
+                            <li><a href="/">Home</a></li>
+                            <div class="dropdown">
+                                <li class="publication"> Publications </li>
+                                    <div class="dropdown-content">
+                                        <li><a href="/journals"> Journals </a></li>
+                                        <li><a href="/books"> Books </a></li>
+                                        <li><a href="/conferences"> Conferences </a></li>
+                                    </div>
+                            </div>
+                            <li><a href="/medias">Medias</a></li>
+                            <li><a href="/resources">Resources</a></li>
+                            <li><a href="/search">Search</a></li>
+                            <li><a href="/research">Research Interest</a></li>
+                            <li><a href="/about">About Me</a></li>
+                            </ul>
+                    </nav>
+                    <img src="images/menu.png" class="menu-icon" onclick="toggle()">
+                </div>
+            </div>
+            <div class="bg m-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="column-2 m-50">
+                            <div class="bg-div">
+                            <h1>Aboaba's Collection</h1>
+                            <p>Never Stop Learning!!!</p>
+                            <a href="" class="btn">Explore Now  &#8594;</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="m-50">
+        <div class="container">
+            <div class="row">
+                <form method="post" action="/search" class="form1 center">
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+<h1><%= title %> </h1>
+<form action="/users/register" method="post">
+    <label for="">Name</label>
+    <input type="text" placeholder="Name" name="name"><br>
+    <label for="">Email</label>
+    <input type="email" placeholder="Email" name="email"><br>
+    <label for="">Username</label>
+    <input type="text" placeholder="Username" name="username"><br>
+    <label for="">Password</label>
+    <input type="password" placeholder="Password" name="password"><br>
+    <label for="">Confirm Password</label>
+    <input type="password" placeholder="Password" name="password2"><br>
+
+    <button type="submit">Register</button>
+</form>
+
+
+
+    
+<br><br>
+
+    <!-- Footer -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+        <h3>Copyright &nbsp; <span id="year"></span> &copy; Aboaba</h3>
+    </div>
+</div> 
+
+
+<!-- Online Bootstrap JavaScript -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"> </script> -->
+<!-- Online fancybox -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+
+<!-- Offline Bootstrap JavaScript -->
+<script src="/js/bootstrap.js"> </script>
+<!-- Offline fancybox -->
+<script src="/js/fancy.js"></script>
+
+<!-- Main js -->
+<script src="/js/main.js"></script>
+    
+
+
+<!-- Js -->
+<script>
+
+    var menuItems = document.getElementById("menuItem");
+    menuItems.style.maxHeight = "0px";
+
+    
+    function toggle() {
+        if(menuItems.style.maxHeight == "0px"){
+            menuItems.style.maxHeight = "290px";
+        } else {
+            menuItems.style.maxHeight = "0px";
+        }
+    }
+
+    const date = new Date();
+    const option = {year : "numeric"};
+    const year = date.toLocaleDateString("en-us", option)
+    const spanYear = document.getElementById("year");
+
+    spanYear.innerText = year;
+
+</script>
+
+</body>
+</html>
