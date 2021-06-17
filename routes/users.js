@@ -4,6 +4,15 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 
+var url = require("url");
+
+function getFormattedUrl(req) {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get("host"),
+  });
+}
+
 // get page module
 var User = require("../models/user");
 
@@ -132,11 +141,16 @@ router.post("/forgot-password", function (req, res) {
           rejectUnauthorized: false,
         },
       });
+
+      let uri = getFormattedUrl(req);
+
       let link =
-        "http://localhost:3000/users/change-password/" +
+        uri +
+        "/users/change-password/" +
         user.id +
         "/" +
         user.forgot_password_key;
+
       let mailInfo = {
         from: "adedejiyusuf26@gmail.com",
         to: "adedejiyusuf50@gmail.com",

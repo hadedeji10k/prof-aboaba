@@ -85,7 +85,7 @@
             <div class="column-4">
                 <img src="/journal_images/<%= journal.id %>/<%= journal.image %>" alt="">
                 <h4><%= journal.title %></h4>
-                <p><%= journal.desc.substring(0,50) + "..."%></p>
+                <p><%= journal.desc.substring(0,40) + "..."%></p>
                 <small><a href="/journals/<%= journal.slug %>" class="btn">View Journal</a></small>
             </div>
             <% }) %>

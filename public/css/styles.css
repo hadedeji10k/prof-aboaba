@@ -603,7 +603,7 @@ h4 i {
         flex-basis: 50%;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
         margin-bottom: 35px;
-
+        max-width: 160px;
     }
     
     .column-4:hover {
@@ -634,6 +634,7 @@ h4 i {
 
 }
 
+/* Media Query for 550px */
 
 @media only screen and (max-width: 500px) {
 
@@ -641,6 +642,7 @@ h4 i {
         flex-basis: 50%;
         min-width: 150px;
         margin-bottom: 15px;
+        max-width: 150px;
     }
 
     .cart {
@@ -659,14 +661,35 @@ h4 i {
     }
 }
 
+/* Media Query for 370px */
+
+@media only screen and (max-width: 370px) {
+
+    .column-4 {
+        min-width: 130px;
+        max-width: 140px;
+    }
+}
+
 @media only screen and (max-width: 320px) {
 
     .column-4 {
         flex-basis: 50%;
         min-width: 100px;
         margin-bottom: 10px;
+        max-width: 130px;
     }
 
+}
+
+@media only screen and (max-width: 300px) {
+
+    .column-4 {
+        flex-basis: 50%;
+        min-width: 150px;
+        margin-bottom: 10px;
+        max-width: 170px;
+    }
 }
 
 a span i {
